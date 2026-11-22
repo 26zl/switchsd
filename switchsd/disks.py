@@ -290,6 +290,16 @@ def _powershell(script: str) -> Any:
     return json.loads(out) if out.strip() else None
 
 
+def _partitions(number: int) -> str:
+    """PowerShell that pipes a disk's partitions on, and none for a blank card.
+
+    Get-Partition reports a disk without partitions as an error, and powershell.exe then exits with 1
+    even with -ErrorAction SilentlyContinue: the exit code is the last statement's. Assigned first,
+    the error stays in a statement that is not the last.
+    """
+    return f"$p = @(Get-Partition -DiskNumber {number} -ErrorAction SilentlyContinue); $p"
+
+
 def _win_number(ident: str) -> int:
     match = re.fullmatch(r"(?:\\\\\.\\)?(?:PhysicalDrive)?(\d+)", ident, re.IGNORECASE)
     if not match:
@@ -303,7 +313,7 @@ def _win_disk(ident: str) -> Disk:
                        "@{n='Bus';e={$_.BusType.ToString()}} | ConvertTo-Json -Compress")
     if not isinstance(info, dict):
         raise Failure(f"disk {number} not found")
-    parts = _powershell(f"Get-Partition -DiskNumber {number} -ErrorAction SilentlyContinue | Select-Object "
+    parts = _powershell(f"{_partitions(number)} | Select-Object "
                         "Offset,Size,DriveLetter,@{n='Paths';e={@($_.AccessPaths)}} | ConvertTo-Json -Compress")
     parts = [parts] if isinstance(parts, dict) else parts or []
     volumes = []
@@ -348,7 +358,7 @@ def _win_ioctl(handle: object, code: int, what: str) -> None:
 @contextlib.contextmanager
 def _win_locked(disk: Disk) -> Iterator[None]:
     _, _, k32 = _kernel32()
-    paths = _powershell(f"Get-Partition -DiskNumber {disk.id} -ErrorAction SilentlyContinue | "
+    paths = _powershell(f"{_partitions(int(disk.id))} | "
                         "ForEach-Object { $_.AccessPaths } | Where-Object { $_ -like '\\\\?\\Volume*' } | "
                         "ConvertTo-Json -Compress")
     paths = [paths] if isinstance(paths, str) else paths or []

@@ -40,6 +40,8 @@ class FakeBotbase(socketserver.ThreadingTCPServer):
 
 
 class Handler(socketserver.StreamRequestHandler):
+    hung_up = False
+
     def handle(self) -> None:
         server: FakeBotbase = self.server  # type: ignore[assignment]
         for raw in self.rfile:
@@ -51,6 +53,8 @@ class Handler(socketserver.StreamRequestHandler):
                 self.wfile.write(replies[command].encode() + b"\n")
             elif command.startswith("file"):
                 self.file_command(server, command.split(" "))
+            if self.hung_up:  # Windows answers a read after the hang-up with an error, not the end of the stream
+                return
 
     def file_command(self, server: FakeBotbase, argv: list[str]) -> None:
         name, path = argv[0], argv[1]
@@ -71,6 +75,7 @@ class Handler(socketserver.StreamRequestHandler):
                 self.wfile.write(out[:-1].rstrip(b"\n") + b"\n")
                 self.wfile.flush()
                 self.connection.shutdown(socket.SHUT_RDWR)
+                self.hung_up = True
                 return
         elif name == "fileRead":
             data = server.files.get(path)

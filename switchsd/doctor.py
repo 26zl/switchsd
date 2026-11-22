@@ -206,7 +206,7 @@ def _check(root: Path, on_card: bool, scan_abi: bool) -> list[tuple[str, str]]:
             if based == sector:
                 add("OK", f"emuMMC: partition-based at sector {sector:#x}, raw_based agrees")
             else:
-                add("FAIL", f"emuMMC: emummc.ini says sector {sector:#x} but {raw.relative_to(root)} says "
+                add("FAIL", f"emuMMC: emummc.ini says sector {sector:#x} but {raw.relative_to(root).as_posix()} says "
                             f"{'nothing' if based is None else hex(based)}")
         else:
             add("OK", f"emuMMC: file-based in {settings.get('path', '?')}")
