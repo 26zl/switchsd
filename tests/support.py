@@ -105,12 +105,17 @@ class TestDisk:
             self.id = subprocess.run(["losetup", "-f", "--show", "-P", str(self.image)], capture_output=True,
                                      text=True, check=True, timeout=60).stdout.strip()
         else:
-            self._vhd = self.image.with_suffix(".vhd")
+            # By its long name: the temporary folder comes as C:\Users\RUNNER~1\..., and the attached disk is
+            # known by the long one.
+            self._vhd = Path(os.path.realpath(self.image)).with_suffix(".vhd")
             size_mb = self.image.stat().st_size // MIB
             _diskpart(f'create vdisk file="{self._vhd}" maximum={size_mb} type=expandable\n'
                       f'select vdisk file="{self._vhd}"\nattach vdisk\n')
+            # Offline, as macOS's --noMount and Linux's loop devices keep the system's hands off the disk:
+            # Windows would mount what the tool writes and add its own System Volume Information folder.
             out = subprocess.run(["powershell", "-NoProfile", "-Command",
-                                  f"(Get-DiskImage -ImagePath '{self._vhd}' | Get-Disk).Number"],
+                                  f"$d = Get-DiskImage -ImagePath '{self._vhd}' | Get-Disk; "
+                                  "Set-Disk -Number $d.Number -IsOffline $true -ErrorAction Stop; $d.Number"],
                                  capture_output=True, text=True, check=True, timeout=120).stdout.strip()
             self.id = out
             data = self.image.read_bytes()
@@ -135,7 +140,12 @@ class TestDisk:
             subprocess.run(["umount", "-q", f"{self.id}p1"], capture_output=True, check=False, timeout=60)
             subprocess.run(["losetup", "-d", self.id], capture_output=True, check=False, timeout=60)
         else:
-            _diskpart(f'select vdisk file="{self._vhd}"\ndetach vdisk\n')
+            try:
+                _diskpart(f'select vdisk file="{self._vhd}"\ndetach vdisk\n')
+            except RuntimeError as e:
+                print(e, file=sys.stderr)  # then the Storage module's way, which goes by the image's path
+                subprocess.run(["powershell", "-NoProfile", "-Command", f"Dismount-DiskImage -ImagePath '{self._vhd}'"],
+                               capture_output=True, text=True, check=True, timeout=120)
         self.id = ""
 
 
@@ -182,9 +192,11 @@ def _diskpart(script: str) -> None:
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
         f.write(script)
     try:
-        subprocess.run(["diskpart", "/s", f.name], capture_output=True, text=True, check=True, timeout=300)
+        done = subprocess.run(["diskpart", "/s", f.name], capture_output=True, text=True, check=False, timeout=300)
     finally:
         os.unlink(f.name)
+    if done.returncode:  # diskpart says what went wrong on its standard output
+        raise RuntimeError(f"diskpart exited with {done.returncode:#x} on:\n{script}{done.stdout}{done.stderr}")
 
 
 def card(tmp: Path, **files: bytes) -> Path:
