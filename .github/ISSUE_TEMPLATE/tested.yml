@@ -1,0 +1,48 @@
+name: It worked, or did not, on other hardware
+description: A console model, an operating system or a card size that the README does not list as tested
+labels: ["tested"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The README's "What has been tested" says what has never run. A line from you can change that table.
+        Leave out everything read from a console or its card: serial numbers, keys, PRODINFO.
+  - type: dropdown
+    id: console
+    attributes:
+      label: Console
+      options:
+        - Switch from 2017 (V1)
+        - Switch from 2019 (V2)
+        - Switch Lite
+        - Switch OLED
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Operating system and Python
+      placeholder: Windows 11, Python 3.13
+    validations:
+      required: true
+  - type: input
+    id: card
+    attributes:
+      label: Card size, and how the console starts hekate
+      placeholder: 128 GB; RCM
+    validations:
+      required: true
+  - type: textarea
+    id: commands
+    attributes:
+      label: The commands you ran
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: What the console did
+      description: Did hekate start from the card, did the emuMMC get created, did CFW start?
+    validations:
+      required: true

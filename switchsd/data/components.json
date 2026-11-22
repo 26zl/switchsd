@@ -1,0 +1,801 @@
+{
+  "schema": 1,
+  "components": [
+    {
+      "id": "atmosphere",
+      "name": "Atmosphère",
+      "category": "core",
+      "default": true,
+      "source": {
+        "repo": "Atmosphere-NX/Atmosphere",
+        "firmware": "libraries/libvapours/include/vapours/ams/ams_api_version.h"
+      },
+      "about": "Custom firmware. Brings the homebrew menu, Daybreak for firmware updates, haze for USB file transfer and reboot_to_payload.",
+      "files": [
+        {
+          "asset": "^atmosphere-[0-9.]+-master-.*\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "hekate",
+      "name": "hekate",
+      "category": "core",
+      "default": true,
+      "overrides": [
+        "atmosphere"
+      ],
+      "source": {
+        "repo": "CTCaer/hekate"
+      },
+      "about": "Bootloader and boot menu. A modchip starts payload.bin; Atmosphère's reboot-to-payload starts hekate too.",
+      "files": [
+        {
+          "asset": "^hekate_ctcaer_[0-9.]+_Nyx_[0-9.]+\\.zip$",
+          "unzip": "",
+          "include": "^bootloader/"
+        },
+        {
+          "asset": "^hekate_ctcaer_[0-9.]+_Nyx_[0-9.]+\\.zip$",
+          "member": "^hekate_ctcaer_[0-9.]+\\.bin$",
+          "to": [
+            "payload.bin",
+            "atmosphere/reboot_payload.bin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sys-patch",
+      "name": "sys-patch",
+      "category": "core",
+      "default": true,
+      "source": {
+        "repo": "impeeza/sys-patch"
+      },
+      "about": "Signature patches as a sysmodule, needed to install and run anything not signed by Nintendo.",
+      "files": [
+        {
+          "asset": "^sys-patch-.*\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "dbi",
+      "name": "DBI (English)",
+      "category": "installer",
+      "default": true,
+      "source": {
+        "repo": "rashevskyv/DBIPatcher"
+      },
+      "about": "Installer and title manager: installs from the SD card, over USB (MTP) and from a PC, dumps your own titles.",
+      "files": [
+        {
+          "asset": "^DBI\\.nro$",
+          "to": [
+            "switch/DBI/DBI.nro"
+          ]
+        },
+        {
+          "asset": "^translation_en\\.bin$",
+          "to": [
+            "switch/DBI/translation.bin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "goldleaf",
+      "name": "Goldleaf",
+      "category": "installer",
+      "default": true,
+      "source": {
+        "repo": "XorTroll/Goldleaf"
+      },
+      "about": "File browser, installer and title manager; pairs with Quark on a PC for USB installs.",
+      "files": [
+        {
+          "asset": "^Goldleaf\\.nro$",
+          "to": [
+            "switch/Goldleaf/Goldleaf.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sphaira",
+      "name": "sphaira",
+      "category": "installer",
+      "default": true,
+      "source": {
+        "repo": "NaGaa95/sphaira"
+      },
+      "about": "Homebrew menu with a file browser, installer and homebrew store.",
+      "files": [
+        {
+          "asset": "^sphaira\\.zip$",
+          "unzip": "",
+          "exclude": "^nx2/"
+        }
+      ]
+    },
+    {
+      "id": "cyberfoil",
+      "name": "CyberFoil",
+      "category": "installer",
+      "default": false,
+      "source": {
+        "repo": "luketanti/CyberFoil"
+      },
+      "about": "NSP/NSZ/XCI/XCZ installer from SD, USB and network libraries.",
+      "files": [
+        {
+          "asset": "^cyberfoil\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "awoo",
+      "name": "Awoo Installer",
+      "category": "installer",
+      "default": false,
+      "source": {
+        "repo": "Huntereb/Awoo-Installer"
+      },
+      "about": "NSP/NSZ/XCI/XCZ installer. TinWoo is an archived fork of it.",
+      "files": [
+        {
+          "asset": "^Awoo-Installer\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "jksv",
+      "name": "JKSV",
+      "category": "saves",
+      "default": true,
+      "source": {
+        "repo": "J-D-K/JKSV"
+      },
+      "about": "Save backup and restore; backups land in /JKSV.",
+      "files": [
+        {
+          "asset": "^JKSV\\.nro$",
+          "to": [
+            "switch/JKSV/JKSV.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "checkpoint",
+      "name": "Checkpoint",
+      "category": "saves",
+      "default": false,
+      "source": {
+        "repo": "BernardoGiordano/Checkpoint"
+      },
+      "about": "Alternative save manager.",
+      "files": [
+        {
+          "asset": "^Checkpoint\\.nro$",
+          "to": [
+            "switch/Checkpoint/Checkpoint.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ftpd",
+      "name": "ftpd",
+      "category": "transfer",
+      "default": false,
+      "source": {
+        "repo": "mtheall/ftpd"
+      },
+      "about": "FTP server for Wi-Fi file transfer. Its last release predates firmware 21 and may crash; sphaira has FTP built in.",
+      "files": [
+        {
+          "asset": "^ftpd\\.nro$",
+          "to": [
+            "switch/ftpd/ftpd.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aio-switch-updater",
+      "name": "AIO Switch Updater",
+      "category": "updater",
+      "default": false,
+      "source": {
+        "repo": "HamletDuFromage/aio-switch-updater"
+      },
+      "about": "On-console updater. Dormant since 2023 apart from a 2025 rebuild, and it also fetches firmware from third parties; switchsd does the updating from a PC instead.",
+      "files": [
+        {
+          "asset": "^aio-switch-updater\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "hb-appstore",
+      "name": "Homebrew App Store",
+      "category": "updater",
+      "default": true,
+      "source": {
+        "repo": "DefenderOfHyrule/hb-appstore"
+      },
+      "about": "Store for homebrew apps. This is the rebuild its maintainers point to until 2.4 is out: the official 2.3.2 predates firmware 21's ABI and crashes on exit there.",
+      "files": [
+        {
+          "asset": "^appstore\\.nro$",
+          "to": [
+            "switch/appstore/appstore.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "edizon-overlay",
+      "name": "EdiZon overlay",
+      "category": "cheats",
+      "default": true,
+      "source": {
+        "repo": "proferabg/EdiZon-Overlay"
+      },
+      "about": "Cheats from the overlay menu (L + D-pad down + R3 > EdiZon > Cheats).",
+      "files": [
+        {
+          "asset": "^EdiZon-Overlay\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "breeze",
+      "name": "Breeze",
+      "category": "cheats",
+      "default": true,
+      "source": {
+        "repo": "tomvita/Breeze-Beta",
+        "prerelease": true
+      },
+      "about": "Cheat manager and memory search, with its own overlays. Every release is marked as a pre-release, so the newest one is taken.",
+      "files": [
+        {
+          "asset": "^Breeze\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "ultrahand",
+      "name": "Ultrahand overlay menu",
+      "category": "overlays",
+      "default": true,
+      "source": {
+        "repo": "ppkantorski/Ultrahand-Overlay"
+      },
+      "about": "The overlay menu, including nx-ovlloader, that the other overlays run in.",
+      "files": [
+        {
+          "asset": "^sdout\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "sys-clk",
+      "name": "sys-clk",
+      "category": "overlays",
+      "default": true,
+      "source": {
+        "repo": "retronx-team/sys-clk"
+      },
+      "about": "Clock control per game, with sys-clk manager. Do not overclock a Switch Lite: its battery and cooling are made for stock clocks.",
+      "files": [
+        {
+          "asset": "^sys-clk-.*\\.zip$",
+          "unzip": "",
+          "exclude": "^README\\.md$"
+        }
+      ]
+    },
+    {
+      "id": "sys-clk-overlay",
+      "name": "sys-clk overlay (Ultrahand build)",
+      "category": "overlays",
+      "default": true,
+      "overrides": [
+        "sys-clk"
+      ],
+      "source": {
+        "repo": "ppkantorski/sys-clk"
+      },
+      "about": "Newer sys-clk overlay that matches the Ultrahand menu.",
+      "files": [
+        {
+          "asset": "^sys-clk-overlay\\.ovl$",
+          "to": [
+            "switch/.overlays/sys-clk-overlay.ovl"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "status-monitor",
+      "name": "Status Monitor Deux",
+      "category": "overlays",
+      "default": true,
+      "source": {
+        "repo": "masagrator/Status-Monitor-Deux"
+      },
+      "about": "Clocks, temperatures, battery and FPS on screen; replaces the archived Status Monitor overlay.",
+      "files": [
+        {
+          "asset": "^Status-Monitor-Deux\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "quickntp",
+      "name": "QuickNTP",
+      "category": "overlays",
+      "default": true,
+      "source": {
+        "repo": "nedex/QuickNTP"
+      },
+      "about": "Sets the clock from an NTP server; Nintendo's time server is blocked under CFW.",
+      "files": [
+        {
+          "asset": "^quickntp-[0-9.]+\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "ovl-sysmodules",
+      "name": "Sysmodules overlay",
+      "category": "overlays",
+      "default": true,
+      "source": {
+        "repo": "ppkantorski/ovl-sysmodules"
+      },
+      "about": "Switches sysmodules such as SaltyNX or sys-con on and off from the overlay menu.",
+      "files": [
+        {
+          "asset": "^ovlSysmodules\\.ovl$",
+          "to": [
+            "switch/.overlays/ovlSysmodules.ovl"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "saltynx",
+      "name": "SaltyNX",
+      "category": "overlays",
+      "default": false,
+      "source": {
+        "repo": "masagrator/SaltyNX"
+      },
+      "about": "Plugin loader that FPSLocker and Status Monitor's FPS counter need. Installed switched off, because it loads into every game: set Auto Start in the Sysmodules overlay and reboot to use it.",
+      "files": [
+        {
+          "asset": "^SaltyNX\\.zip$",
+          "unzip": "",
+          "exclude": "/flags/boot2\\.flag$"
+        }
+      ]
+    },
+    {
+      "id": "fpslocker",
+      "name": "FPSLocker",
+      "category": "overlays",
+      "default": false,
+      "requires": [
+        "saltynx"
+      ],
+      "source": {
+        "repo": "masagrator/FPSLocker"
+      },
+      "about": "Per-game frame rate limits; needs SaltyNX switched on.",
+      "files": [
+        {
+          "asset": "^FPSLocker\\.ovl$",
+          "to": [
+            "switch/.overlays/FPSLocker.ovl"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "missioncontrol",
+      "name": "MissionControl",
+      "category": "controllers",
+      "default": true,
+      "source": {
+        "repo": "ndeadly/MissionControl"
+      },
+      "about": "PlayStation, Xbox and other Bluetooth controllers work like Nintendo ones.",
+      "files": [
+        {
+          "asset": "^MissionControl-.*\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "disable-remap-dialog",
+      "name": "Disable remap dialog",
+      "category": "controllers",
+      "default": true,
+      "source": {
+        "repo": "ndeadly/mc_exefs_patches"
+      },
+      "about": "Home menu patches that drop the dialog shown whenever button remapping is active. From MissionControl's author; its own repository is archived and this one carries the patches on.",
+      "files": [
+        {
+          "asset": "^mc-exefs-.*-disable_remap_dialog\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "sys-con",
+      "name": "sys-con",
+      "category": "controllers",
+      "default": false,
+      "source": {
+        "repo": "o0Zz/sys-con"
+      },
+      "about": "Wired USB controllers from other consoles. Starts at boot.",
+      "files": [
+        {
+          "asset": "^sys-con-.*\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "ldn_mitm",
+      "name": "ldn_mitm",
+      "category": "network",
+      "default": true,
+      "source": {
+        "repo": "DefenderOfHyrule/ldn_mitm"
+      },
+      "about": "Local-wireless multiplayer over LAN. Built for one Atmosphère version, so it is pinned together with it.",
+      "files": [
+        {
+          "asset": "^ldn_mitm\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "90dns-tester",
+      "name": "Switch 90DNS tester",
+      "category": "network",
+      "default": true,
+      "source": {
+        "repo": "meganukebmp/Switch_90DNS_tester"
+      },
+      "about": "Checks that Nintendo's servers are blocked before you go online under CFW.",
+      "files": [
+        {
+          "asset": "^Switch_90DNS_tester\\.nro$",
+          "to": [
+            "switch/Switch_90DNS_tester/Switch_90DNS_tester.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nxthemes",
+      "name": "NXThemes Installer",
+      "category": "themes",
+      "default": true,
+      "source": {
+        "repo": "exelix11/SwitchThemeInjector"
+      },
+      "about": "Installs custom home menu themes.",
+      "files": [
+        {
+          "asset": "^NXThemesInstaller\\.nro$",
+          "to": [
+            "switch/NXThemesInstaller/NXThemesInstaller.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "theme-patches",
+      "name": "Theme patches",
+      "category": "themes",
+      "default": true,
+      "source": {
+        "repo": "exelix11/theme-patches",
+        "archive": "master"
+      },
+      "about": "Home menu patches NXThemes Installer needs for each firmware, in themes/systemPatches where it looks for them.",
+      "files": [
+        {
+          "asset": "archive",
+          "unzip": "^[^/]+/systemPatches/",
+          "into": "themes/systemPatches/"
+        }
+      ]
+    },
+    {
+      "id": "themezer-nx",
+      "name": "Themezer-NX",
+      "category": "themes",
+      "default": true,
+      "source": {
+        "repo": "ThemezerNX/Themezer-NX"
+      },
+      "about": "Browses and downloads themes from themezer.net.",
+      "files": [
+        {
+          "asset": "^themezer-nx\\.nro$",
+          "to": [
+            "switch/Themezer-NX/themezer-nx.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "emuiibo",
+      "name": "emuiibo",
+      "category": "utility",
+      "default": true,
+      "source": {
+        "repo": "XorTroll/emuiibo"
+      },
+      "about": "Virtual amiibo; amiibo go in /emuiibo/amiibo.",
+      "files": [
+        {
+          "asset": "^emuiibo\\.zip$",
+          "unzip": "^SdOut/"
+        }
+      ]
+    },
+    {
+      "id": "linkalho",
+      "name": "Linkalho",
+      "category": "utility",
+      "default": true,
+      "source": {
+        "repo": "impeeza/linkalho"
+      },
+      "about": "Links a placeholder Nintendo Account offline, for games that ask for one.",
+      "files": [
+        {
+          "asset": "^linkalho-.*\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "moonlight",
+      "name": "Moonlight",
+      "category": "streaming",
+      "default": true,
+      "source": {
+        "repo": "XITRIX/Moonlight-Switch"
+      },
+      "about": "Streams games from a gaming PC (Sunshine or GeForce Experience) to the Switch.",
+      "files": [
+        {
+          "asset": "^Moonlight-Switch\\.nro$",
+          "to": [
+            "switch/Moonlight-Switch/Moonlight-Switch.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "green-nx",
+      "name": "green-nx",
+      "category": "streaming",
+      "default": true,
+      "source": {
+        "repo": "rmrf404/green-nx"
+      },
+      "about": "Xbox Cloud Gaming client: Game Pass cloud games on the Switch over Wi-Fi.",
+      "files": [
+        {
+          "asset": "^green-nx\\.nro$",
+          "to": [
+            "switch/green-nx/green-nx.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "autorun",
+      "name": "Autorun",
+      "category": "games",
+      "default": true,
+      "source": {
+        "repo": "autorunhq/autorun"
+      },
+      "about": "Runs your own Windows PC games (Wine with FEX/Box64, DXVK, VKD3D). Experimental. It updates itself, so setup installs it only when it is missing.",
+      "files": [
+        {
+          "asset": "^autorun-.*\\.zip$",
+          "unzip": "",
+          "keep": "^switch/wine/"
+        }
+      ]
+    },
+    {
+      "id": "tico",
+      "name": "tico",
+      "category": "games",
+      "default": true,
+      "source": {
+        "repo": "ticohq/tico"
+      },
+      "about": "Emulation frontend: emulators from the NES to the GameCube, Wii, PS2 and 3DS, installed from its own Store. It refuses Album mode, so start it from a game or a forwarder. It updates itself, so setup installs it only when it is missing.",
+      "files": [
+        {
+          "asset": "^tico\\.nro$",
+          "to": [
+            "switch/tico/tico.nro"
+          ],
+          "keep": "^switch/tico/tico\\.nro$"
+        }
+      ]
+    },
+    {
+      "id": "sysdvr",
+      "name": "SysDVR",
+      "category": "streaming",
+      "default": false,
+      "source": {
+        "repo": "exelix11/SysDVR"
+      },
+      "about": "Streams the Switch's screen to a PC over USB or Wi-Fi. Starts at boot.",
+      "files": [
+        {
+          "asset": "^SysDVR\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "battery-desync-fix",
+      "name": "Battery desync fix",
+      "category": "utility",
+      "default": false,
+      "source": {
+        "repo": "CTCaer/battery_desync_fix_nx"
+      },
+      "about": "CTCaer's tool for a battery gauge that has lost track of the real charge, for example after a battery swap.",
+      "files": [
+        {
+          "asset": "^battery_desync_fix_v[0-9.]+\\.nro$",
+          "to": [
+            "switch/battery_desync_fix/battery_desync_fix.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sys-botbase",
+      "name": "sys-botbase",
+      "category": "remote",
+      "default": true,
+      "source": {
+        "repo": "masagrator/sys-botbase"
+      },
+      "about": "Remote control over Wi-Fi for `switchsd.py remote`: buttons, touch, screenshots, SD card files. masagrator's build, because upstream's 4.5 MB heap crashes firmware 21 and newer (error 0x10801). Installed switched off: turn it on in the Sysmodules overlay only while you use it, because anyone on the network can then control the console and read its card.",
+      "files": [
+        {
+          "asset": "^sys-botBase\\.zip$",
+          "unzip": "",
+          "exclude": "/flags/boot2\\.flag$|/toolbox\\.json$"
+        },
+        {
+          "content": "{\n    \"name\"  : \"sys-botbase\",\n    \"tid\"   : \"430000000000000B\",\n    \"requires_reboot\": false\n}\n",
+          "to": [
+            "atmosphere/contents/430000000000000B/toolbox.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tegraexplorer",
+      "name": "TegraExplorer-Ext",
+      "category": "payload",
+      "default": true,
+      "source": {
+        "repo": "sthetix/TegraExplorer-Ext"
+      },
+      "about": "hekate payload: file manager outside Horizon; scripts/FirmwareDump.te dumps the console's own firmware for Daybreak.",
+      "files": [
+        {
+          "asset": "^TegraExplorer-Ext-.*\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "kitnx",
+      "name": "KitNX",
+      "category": "payload",
+      "default": false,
+      "source": {
+        "repo": "sthetix/KitNX"
+      },
+      "about": "hekate payload from the HATS author: network block and theme removal from outside Horizon, and a modified Atmosphère package3 that Tinfoil needs. Each release fits one Atmosphère version.",
+      "files": [
+        {
+          "asset": "^KitNX-.*\\.zip$",
+          "unzip": ""
+        }
+      ]
+    },
+    {
+      "id": "fizeau",
+      "name": "Fizeau",
+      "category": "utility",
+      "default": false,
+      "source": {
+        "repo": "averne/Fizeau"
+      },
+      "about": "Screen colour temperature and filters. Starts at boot.",
+      "files": [
+        {
+          "asset": "^Fizeau-.*\\.zip$",
+          "unzip": "^(?:Fizeau-[^/]+/)?"
+        }
+      ]
+    },
+    {
+      "id": "nx-shell",
+      "name": "NX-Shell",
+      "category": "transfer",
+      "default": false,
+      "source": {
+        "repo": "DefenderOfHyrule/NX-Shell"
+      },
+      "about": "File manager; this fork is rebuilt for current firmware.",
+      "files": [
+        {
+          "asset": "^NX-Shell\\.nro$",
+          "to": [
+            "switch/NX-Shell/NX-Shell.nro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nx-activity-log",
+      "name": "NX-Activity-Log",
+      "category": "utility",
+      "default": false,
+      "source": {
+        "repo": "zdm65477730/NX-Activity-Log"
+      },
+      "about": "Play time per game.",
+      "files": [
+        {
+          "asset": "^NX-Activity-Log\\.nro$",
+          "to": [
+            "switch/NX-Activity-Log/NX-Activity-Log.nro"
+          ]
+        }
+      ]
+    }
+  ]
+}

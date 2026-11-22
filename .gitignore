@@ -1,0 +1,30 @@
+# Anything read off a card or console: images, keys, PRODINFO, NAND and fuse dumps.
+*.img
+*.img.sha256
+*.swimg
+*.swimg.sha256
+*.dmg
+*.keys
+*PRODINFO*
+*BISKEYS*
+BOOT0*
+BOOT1*
+rawnand*
+fuse*.bin
+backup/
+private/
+
+# Python and its tools
+__pycache__/
+*.pyc
+
+# editor and OS cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+.mypy_cache/
+.ruff_cache/
+.claude/worktrees/

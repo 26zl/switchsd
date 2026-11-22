@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: A security problem
+    url: https://github.com/26zl/switchsd/security/policy
+    about: Something that could make the tool write to the wrong disk or install other files than the pinned ones. Report it privately.

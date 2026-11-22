@@ -1,0 +1,55 @@
+name: pins
+# Compares the pinned releases with what each project publishes: weekly, and whenever the pins change.
+# A newer release is a warning; a pinned file that no longer matches GitHub's checksum fails the run.
+# The weekly run also keeps one issue up to date with what is behind, and closes it once nothing is.
+on:
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+  push:
+    paths: ['switchsd/data/components*.json']
+  pull_request:
+    paths: ['switchsd/data/components*.json']
+permissions:
+  contents: read
+
+jobs:
+  pins:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: compare pins with upstream
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          python3 switchsd.py updates --verify | tee "$RUNNER_TEMP/updates.txt"
+      - name: keep the issue about pins up to date
+        if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: Pinned releases have updates
+        run: |
+          report="$RUNNER_TEMP/updates.txt"
+          [ -f "$report" ] || exit 0
+          found=$(grep -E '^::(warning|error)::' "$report" | sed -E 's/^::(warning|error)::/- /' || true)
+          open=$(gh issue list --state open --search "in:title \"$TITLE\"" --json number,title \
+                 --jq ".[] | select(.title == \"$TITLE\") | .number" | head -n 1)
+          if [ -z "$found" ]; then
+            [ -n "$open" ] && gh issue close "$open" --comment "Every component is pinned to its newest release."
+            exit 0
+          fi
+          body=$(printf '%s\n\n%s\n\n%s\n' \
+            "The weekly check found these, against \`switchsd/data/components.lock.json\`:" "$found" \
+            "Look at each release and its archive, then run \`python3 switchsd.py lock\` and the tests (AGENTS.md).")
+          if [ -n "$open" ]; then
+            gh issue edit "$open" --body "$body"
+          else
+            gh issue create --title "$TITLE" --body "$body"
+          fi

@@ -1,0 +1,44 @@
+{
+  "remove": [
+    {
+      "path": "themes/*.ips",
+      "reason": "theme patches outside themes/systemPatches, where NXThemes Installer never looks"
+    },
+    {
+      "path": "config/prodinforge/",
+      "reason": "another console's PRODINFO and keys, shipped by the HATS pack"
+    },
+    {
+      "path": "bootloader/payloads/ProdinForge.bin",
+      "reason": "only uses the donor console data removed above"
+    },
+    {
+      "path": "switch/.overlays/Status-Monitor-Overlay.ovl",
+      "reason": "archived; replaced by Status Monitor Deux"
+    },
+    {
+      "path": "config/status-monitor/",
+      "reason": "settings of the archived Status Monitor overlay"
+    },
+    {
+      "path": "switch/hats-tools/",
+      "reason": "HATS pack updater; it would put the HATS pack back over this setup"
+    },
+    {
+      "path": "config/hats-tools/",
+      "reason": "HATS-Tools settings"
+    },
+    {
+      "path": "manifest.json",
+      "reason": "HATS pack metadata"
+    },
+    {
+      "path": "HATS_VERSION.txt",
+      "reason": "HATS pack metadata"
+    },
+    {
+      "path": "config/kitnx/tce/1.12.1/",
+      "reason": "KitNX's files for Atmosphère 1.12.1; KitNX now brings the ones for the installed version"
+    }
+  ]
+}

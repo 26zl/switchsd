@@ -1,0 +1,62 @@
+name: Something went wrong
+description: A command failed, did the wrong thing, or a card it made does not work
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Leave out everything read from a console or its card: serial numbers, keys, PRODINFO, card images.
+        A problem that could make the tool write to the wrong disk goes the private way: see SECURITY.md.
+  - type: textarea
+    id: command
+    attributes:
+      label: The command, and everything it printed
+      description: Copy it from the terminal as it is. Add SWITCHSD_DEBUG=1 in front of the command if it ended with "Set SWITCHSD_DEBUG=1".
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and what happened on the console
+      description: For a card that does not work, say how far the console gets, such as hekate's menu or a black screen.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: switchsd version
+      description: What `python3 switchsd.py --version` prints, or the commit.
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Operating system and Python
+      placeholder: macOS 15.5, Python 3.9.6
+    validations:
+      required: true
+  - type: dropdown
+    id: console
+    attributes:
+      label: Console
+      options:
+        - Switch from 2017 (V1)
+        - Switch from 2019 (V2)
+        - Switch Lite
+        - Switch OLED
+        - No console involved
+    validations:
+      required: true
+  - type: input
+    id: card
+    attributes:
+      label: Card size, and how the console starts hekate
+      placeholder: 256 GB; a modchip
+  - type: checkboxes
+    id: private
+    attributes:
+      label: Before you send
+      options:
+        - label: Nothing above was read from a console or its card (serial numbers, keys, PRODINFO).
+          required: true

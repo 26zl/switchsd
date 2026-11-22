@@ -1,0 +1,36 @@
+name: ci
+on: [push, pull_request]
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # macOS attaches disk images and Windows attaches VHDs as the runner user, so the end-to-end
+      # tests run here; on Linux they need root for loop devices and are skipped in this step.
+      - name: tests
+        if: runner.os != 'Windows'
+        run: python3 -m unittest discover -s tests -v
+      - name: tests
+        if: runner.os == 'Windows'
+        run: python -m unittest discover -s tests -v
+      # fsck.fat judges the volumes the tool writes; dmsetup stands in for LUKS and LVM.
+      - name: tools for the end-to-end tests
+        if: runner.os == 'Linux'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends dosfstools dmsetup
+      - name: end-to-end tests as root
+        if: runner.os == 'Linux'
+        run: sudo python3 -m unittest discover -s tests -p 'test_e2e.py' -v
+      # sudo python3 runs macOS's own /usr/bin/python3 (3.9), so the tool has to work there too.
+      - name: tests on macOS's Python
+        if: runner.os == 'macOS'
+        run: /usr/bin/python3 -m unittest discover -s tests -v

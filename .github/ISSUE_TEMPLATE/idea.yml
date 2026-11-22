@@ -1,0 +1,19 @@
+name: An idea
+description: A command, an option or a component that is missing
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What you are trying to do
+      description: The situation, before any solution.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help
+  - type: markdown
+    attributes:
+      value: |
+        For a component, name its repository. docs/homebrew.md lists what is left out on purpose, and why.

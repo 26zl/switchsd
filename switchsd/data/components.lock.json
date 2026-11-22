@@ -1,0 +1,456 @@
+{
+ "90dns-tester": {
+  "tag": "v1.1.0",
+  "published": "2026-04-26",
+  "assets": {
+   "Switch_90DNS_tester.nro": {
+    "url": "https://github.com/meganukebmp/Switch_90DNS_tester/releases/download/v1.1.0/Switch_90DNS_tester.nro",
+    "sha256": "0ce5c67e93983f14161148b8796726ebf6b4f86ffb77b49b842fe017c7e5fd14"
+   }
+  }
+ },
+ "aio-switch-updater": {
+  "tag": "2.23.3",
+  "published": "2025-11-17",
+  "assets": {
+   "aio-switch-updater.zip": {
+    "url": "https://github.com/HamletDuFromage/aio-switch-updater/releases/download/2.23.3/aio-switch-updater.zip",
+    "sha256": "d7261127b75434cc5087e1e796a62d54089ea104aff4973d5708e7db06f326b2"
+   }
+  }
+ },
+ "atmosphere": {
+  "tag": "1.12.2",
+  "published": "2026-11-11",
+  "assets": {
+   "atmosphere-1.12.2-master-4e3f37038+hbl-2.4.5+hbmenu-3.6.1.zip": {
+    "url": "https://github.com/Atmosphere-NX/Atmosphere/releases/download/1.12.2/atmosphere-1.12.2-master-4e3f37038%2Bhbl-2.4.5%2Bhbmenu-3.6.1.zip",
+    "sha256": "57d0019ff430af4b712899ff58fd341da8d9ed38159c51ade8e29fd42ecb2dda"
+   }
+  },
+  "firmware": "23.5.0"
+ },
+ "autorun": {
+  "tag": "test-build-4",
+  "published": "2026-09-24",
+  "assets": {
+   "autorun-test-build-4.zip": {
+    "url": "https://github.com/autorunhq/autorun/releases/download/test-build-4/autorun-test-build-4.zip",
+    "sha256": "183ebb2f5d4d17903e9f2e3d4d566d0921bfd568eee0567d21ead1e0f1241ad2"
+   }
+  }
+ },
+ "awoo": {
+  "tag": "1.3.6",
+  "published": "2025-11-15",
+  "assets": {
+   "Awoo-Installer.zip": {
+    "url": "https://github.com/Huntereb/Awoo-Installer/releases/download/1.3.6/Awoo-Installer.zip",
+    "sha256": "b40c139d1a7eb30bdd2c8b6fe1884f2691dc51a7b73c7c1cbe594bf898f583a3"
+   }
+  }
+ },
+ "battery-desync-fix": {
+  "tag": "1.5.1",
+  "published": "2025-11-17",
+  "assets": {
+   "battery_desync_fix_v1.5.1.nro": {
+    "url": "https://github.com/CTCaer/battery_desync_fix_nx/releases/download/1.5.1/battery_desync_fix_v1.5.1.nro",
+    "sha256": "871ef7941de9eca9bb6e50396338f735017fb48a893f7e76c54fdf9ddf90af70"
+   }
+  }
+ },
+ "breeze": {
+  "tag": "beta129.02",
+  "published": "2026-11-21",
+  "assets": {
+   "Breeze.zip": {
+    "url": "https://github.com/tomvita/Breeze-Beta/releases/download/beta129.02/Breeze.zip",
+    "sha256": "84732005a9fb20a3b6f22a3ad4c7e46f38dc7454648bd6e99782679a43610f6e"
+   }
+  }
+ },
+ "checkpoint": {
+  "tag": "v5.3.0",
+  "published": "2026-10-13",
+  "assets": {
+   "Checkpoint.nro": {
+    "url": "https://github.com/BernardoGiordano/Checkpoint/releases/download/v5.3.0/Checkpoint.nro",
+    "sha256": "e2c76687df29f845f11a61a62a25327703b22250d4a78dbdbed6dd1401253e48"
+   }
+  }
+ },
+ "cyberfoil": {
+  "tag": "1.5.1",
+  "published": "2026-10-31",
+  "assets": {
+   "cyberfoil.zip": {
+    "url": "https://github.com/luketanti/CyberFoil/releases/download/1.5.1/cyberfoil.zip",
+    "sha256": "37c21a2f8fcf063e011ec7d16ee9b488673a90139c391a136f444de62eeb10c3"
+   }
+  }
+ },
+ "dbi": {
+  "tag": "921",
+  "published": "2026-10-23",
+  "assets": {
+   "DBI.nro": {
+    "url": "https://github.com/rashevskyv/DBIPatcher/releases/download/921/DBI.nro",
+    "sha256": "1f8ccd8d9d8a944b3be3ef6d3c0ef9f4b433fb94d40747ce0b129be5ad310082"
+   },
+   "translation_en.bin": {
+    "url": "https://github.com/rashevskyv/DBIPatcher/releases/download/921/translation_en.bin",
+    "sha256": "fc449d83a027a9b496320d5420c8b459daa4f47508412256c0df9a90047adb93"
+   }
+  }
+ },
+ "disable-remap-dialog": {
+  "tag": "v23.5.0",
+  "published": "2026-11-11",
+  "assets": {
+   "mc-exefs-23.5.0-disable_remap_dialog.zip": {
+    "url": "https://github.com/ndeadly/mc_exefs_patches/releases/download/v23.5.0/mc-exefs-23.5.0-disable_remap_dialog.zip",
+    "sha256": "a98fd2edb95093d816c88dad3e081b70b3816f8f82db02befed788954dd5f5e2"
+   }
+  }
+ },
+ "edizon-overlay": {
+  "tag": "v1.0.15",
+  "published": "2026-04-24",
+  "assets": {
+   "EdiZon-Overlay.zip": {
+    "url": "https://github.com/proferabg/EdiZon-Overlay/releases/download/v1.0.15/EdiZon-Overlay.zip",
+    "sha256": "8d594d97893376583d92e250d28d7e62f75e5b0bf68baf9b3d0232ab0bdef243"
+   }
+  }
+ },
+ "emuiibo": {
+  "tag": "1.1.3",
+  "published": "2026-03-14",
+  "assets": {
+   "emuiibo.zip": {
+    "url": "https://github.com/XorTroll/emuiibo/releases/download/1.1.3/emuiibo.zip",
+    "sha256": "0153a9a53cbfc2c59f7ed19a2bdf04a637f1def21e6243fab2b4a6c88209e0de"
+   }
+  }
+ },
+ "fizeau": {
+  "tag": "v2.8.3",
+  "published": "2026-08-07",
+  "assets": {
+   "Fizeau-2.8.3-5bf3f0d.zip": {
+    "url": "https://github.com/averne/Fizeau/releases/download/v2.8.3/Fizeau-2.8.3-5bf3f0d.zip",
+    "sha256": "65145e8d6137a9921edf4d79b0bc3a4f6dda9069ff8794642e00377e33fc9652"
+   }
+  }
+ },
+ "fpslocker": {
+  "tag": "3.5.1",
+  "published": "2026-10-29",
+  "assets": {
+   "FPSLocker.ovl": {
+    "url": "https://github.com/masagrator/FPSLocker/releases/download/3.5.1/FPSLocker.ovl",
+    "sha256": "8938c08a8b3d9cf7f65ecf7660aad418a487ccafa0489c48907f804e1517f672"
+   }
+  }
+ },
+ "ftpd": {
+  "tag": "v3.2.1",
+  "published": "2024-11-17",
+  "assets": {
+   "ftpd.nro": {
+    "url": "https://github.com/mtheall/ftpd/releases/download/v3.2.1/ftpd.nro",
+    "sha256": "cc8b2b335ccbe1bf1215a29c4ef3698effc879d3ddde2c6c0de505d14bc39c90"
+   }
+  }
+ },
+ "goldleaf": {
+  "tag": "1.2.1",
+  "published": "2026-09-22",
+  "assets": {
+   "Goldleaf.nro": {
+    "url": "https://github.com/XorTroll/Goldleaf/releases/download/1.2.1/Goldleaf.nro",
+    "sha256": "4f05301db5d090d79bf04503af7e1eca587a60709c626e7e67f9e57b2fcc0017"
+   }
+  }
+ },
+ "green-nx": {
+  "tag": "v1.0.30",
+  "published": "2026-08-24",
+  "assets": {
+   "green-nx.nro": {
+    "url": "https://github.com/rmrf404/green-nx/releases/download/v1.0.30/green-nx.nro",
+    "sha256": "dc0e0c2d24e6544d2412b82cdc416b201f9a27dcd741f2c12d8c2231f10f9608"
+   }
+  }
+ },
+ "hb-appstore": {
+  "tag": "v2.3.2",
+  "published": "2025-11-18",
+  "assets": {
+   "appstore.nro": {
+    "url": "https://github.com/DefenderOfHyrule/hb-appstore/releases/download/v2.3.2/appstore.nro",
+    "sha256": "9f116efdbde92e5b35c1e97b7710373e56395f6b125532b6ab1b6e02e9e5a9c1"
+   }
+  }
+ },
+ "hekate": {
+  "tag": "v6.5.5",
+  "published": "2026-11-11",
+  "assets": {
+   "hekate_ctcaer_6.5.5_Nyx_1.9.5.zip": {
+    "url": "https://github.com/CTCaer/hekate/releases/download/v6.5.5/hekate_ctcaer_6.5.5_Nyx_1.9.5.zip",
+    "sha256": "e3c6613fc9e099d00683063855812a6059247da6e9d75f2caa203f9e78e5df56"
+   }
+  }
+ },
+ "jksv": {
+  "tag": "12/02/2025",
+  "published": "2025-12-02",
+  "assets": {
+   "JKSV.nro": {
+    "url": "https://github.com/J-D-K/JKSV/releases/download/12/02/2025/JKSV.nro",
+    "sha256": "a2b7f6372a4b81f3c3194aa6f96f2824bdea853b9a8ebf8c4a008d0d865a0cbf"
+   }
+  }
+ },
+ "kitnx": {
+  "tag": "1.0.3",
+  "published": "2026-11-12",
+  "assets": {
+   "KitNX-1.0.3.zip": {
+    "url": "https://github.com/sthetix/KitNX/releases/download/1.0.3/KitNX-1.0.3.zip",
+    "sha256": "95871ca393b7804b4756ed21cd40448ca2bf06786a0c9097713ef79874e58e42"
+   }
+  }
+ },
+ "ldn_mitm": {
+  "tag": "v1.22.2",
+  "published": "2026-11-11",
+  "assets": {
+   "ldn_mitm.zip": {
+    "url": "https://github.com/DefenderOfHyrule/ldn_mitm/releases/download/v1.22.2/ldn_mitm.zip",
+    "sha256": "a216feecab5182bf4ecd6f575dc82c8fb780231da3a3c0b48b6063e4a2e5d45e"
+   }
+  }
+ },
+ "linkalho": {
+  "tag": "v2.0.2",
+  "published": "2025-11-17",
+  "assets": {
+   "linkalho-v2.0.2.zip": {
+    "url": "https://github.com/impeeza/linkalho/releases/download/v2.0.2/linkalho-v2.0.2.zip",
+    "sha256": "79463930b9973c1bf3bb23ef22a2dc5d0fa55daf940b1964dcae67839c749bfa"
+   }
+  }
+ },
+ "missioncontrol": {
+  "tag": "v0.16.1",
+  "published": "2026-11-11",
+  "assets": {
+   "MissionControl-0.16.1-master-47e5d82e.zip": {
+    "url": "https://github.com/ndeadly/MissionControl/releases/download/v0.16.1/MissionControl-0.16.1-master-47e5d82e.zip",
+    "sha256": "d62f955f3c4545167b24ea7b6f446a06cd7cd03d5470bf279acf41e7d6ec8379"
+   }
+  }
+ },
+ "moonlight": {
+  "tag": "v1.5.0",
+  "published": "2026-05-24",
+  "assets": {
+   "Moonlight-Switch.nro": {
+    "url": "https://github.com/XITRIX/Moonlight-Switch/releases/download/v1.5.0/Moonlight-Switch.nro",
+    "sha256": "594167a17b587d3bf828ea3477afbe71c114b4ef5d25940ea4ca831788d0af69"
+   }
+  }
+ },
+ "nx-activity-log": {
+  "tag": "v1.6.0",
+  "published": "2026-10-19",
+  "assets": {
+   "NX-Activity-Log.nro": {
+    "url": "https://github.com/zdm65477730/NX-Activity-Log/releases/download/v1.6.0/NX-Activity-Log.nro",
+    "sha256": "c04a84744535fc483222593771a8781cef564314a1766e754821b0c69919eea4"
+   }
+  }
+ },
+ "nx-shell": {
+  "tag": "4.02",
+  "published": "2025-11-18",
+  "assets": {
+   "NX-Shell.nro": {
+    "url": "https://github.com/DefenderOfHyrule/NX-Shell/releases/download/4.02/NX-Shell.nro",
+    "sha256": "f56247c57982af53712017dce26a392b0b94bfe8087005437072574e13362ae0"
+   }
+  }
+ },
+ "nxthemes": {
+  "tag": "nxt-3.0.2",
+  "published": "2026-09-22",
+  "assets": {
+   "NXThemesInstaller.nro": {
+    "url": "https://github.com/exelix11/SwitchThemeInjector/releases/download/nxt-3.0.2/NXThemesInstaller.nro",
+    "sha256": "36ac0fac5477e08a176b2f155b8b3c170c1291004d943541348599bae8cf97a1"
+   }
+  }
+ },
+ "ovl-sysmodules": {
+  "tag": "v1.5.3",
+  "published": "2026-06-25",
+  "assets": {
+   "ovlSysmodules.ovl": {
+    "url": "https://github.com/ppkantorski/ovl-sysmodules/releases/download/v1.5.3/ovlSysmodules.ovl",
+    "sha256": "261a83c56ba48161fa584d1c722ea5b9e2fe7bfd064e2cf751d75d1b5680dde0"
+   }
+  }
+ },
+ "quickntp": {
+  "tag": "1.6.0",
+  "published": "2025-11-29",
+  "assets": {
+   "quickntp-1.6.0.zip": {
+    "url": "https://github.com/nedex/QuickNTP/releases/download/1.6.0/quickntp-1.6.0.zip",
+    "sha256": "e1ed817553d81b5ab28f8a4df9b2b6c93c6c55d2d4ea74bccc453e404511405e"
+   }
+  }
+ },
+ "saltynx": {
+  "tag": "2.1.4",
+  "published": "2026-11-03",
+  "assets": {
+   "SaltyNX.zip": {
+    "url": "https://github.com/masagrator/SaltyNX/releases/download/2.1.4/SaltyNX.zip",
+    "sha256": "b96072fc1266febce624db66dce00079106d22ebdcb9bd9876724a5a5edb22aa"
+   }
+  }
+ },
+ "sphaira": {
+  "tag": "1.1.1",
+  "published": "2026-11-19",
+  "assets": {
+   "sphaira.zip": {
+    "url": "https://github.com/NaGaa95/sphaira/releases/download/1.1.1/sphaira.zip",
+    "sha256": "776eed26cfc46545e07ab04379761eec787dbad1fecde09321cc35ff9dbfc9df"
+   }
+  }
+ },
+ "status-monitor": {
+  "tag": "0.2.1",
+  "published": "2026-06-09",
+  "assets": {
+   "Status-Monitor-Deux.zip": {
+    "url": "https://github.com/masagrator/Status-Monitor-Deux/releases/download/0.2.1/Status-Monitor-Deux.zip",
+    "sha256": "6723ec1f98cfc4569850a6be49755f9aee7033ae4e6206f2b0ce4e1bc9bb11f7"
+   }
+  }
+ },
+ "sys-botbase": {
+  "tag": "2.6-kill",
+  "published": "2026-10-14",
+  "assets": {
+   "sys-botBase.zip": {
+    "url": "https://github.com/masagrator/sys-botbase/releases/download/2.6-kill/sys-botBase.zip",
+    "sha256": "9a2273c4a4fe09d80f1f8b981e274424d47658992ec770e238d8551dc250733d"
+   }
+  }
+ },
+ "sys-clk": {
+  "tag": "2.0.1",
+  "published": "2024-10-14",
+  "assets": {
+   "sys-clk-2.0.1-21fix.zip": {
+    "url": "https://github.com/retronx-team/sys-clk/releases/download/2.0.1/sys-clk-2.0.1-21fix.zip",
+    "sha256": "2099d960644afb07564b803d5b06bd37554cb186d5bac8868da96307148a5cd7"
+   }
+  }
+ },
+ "sys-clk-overlay": {
+  "tag": "2.0.1+r28",
+  "published": "2026-07-19",
+  "assets": {
+   "sys-clk-overlay.ovl": {
+    "url": "https://github.com/ppkantorski/sys-clk/releases/download/2.0.1%2Br28/sys-clk-overlay.ovl",
+    "sha256": "5fadfd8e5dcc4c00da5554e43b4040ccc67b091a756e4272053ef5fe8e1b074c"
+   }
+  }
+ },
+ "sys-con": {
+  "tag": "2.1.0",
+  "published": "2026-11-06",
+  "assets": {
+   "sys-con-2.1.0.zip": {
+    "url": "https://github.com/o0Zz/sys-con/releases/download/2.1.0/sys-con-2.1.0.zip",
+    "sha256": "5619f440c99799cd922ce1ee58abd0e0128b214833dde3be8f740c5d7d60feb9"
+   }
+  }
+ },
+ "sys-patch": {
+  "tag": "v1.6.3.0",
+  "published": "2026-10-19",
+  "assets": {
+   "sys-patch-v1.6.3.0.zip": {
+    "url": "https://github.com/impeeza/sys-patch/releases/download/v1.6.3.0/sys-patch-v1.6.3.0.zip",
+    "sha256": "089ecb8c951fbfdf892123e229dda7a3412633faddcab7a5f67b261bee945b81"
+   }
+  }
+ },
+ "sysdvr": {
+  "tag": "v6.3",
+  "published": "2026-02-10",
+  "assets": {
+   "SysDVR.zip": {
+    "url": "https://github.com/exelix11/SysDVR/releases/download/v6.3/SysDVR.zip",
+    "sha256": "d86b0d5c88b8882d52d477b6a0892bb406b5999d0bb61e2888ec5beb2428db6f"
+   }
+  }
+ },
+ "tegraexplorer": {
+  "tag": "v4.2.2",
+  "published": "2026-02-26",
+  "assets": {
+   "TegraExplorer-Ext-4.2.2.zip": {
+    "url": "https://github.com/sthetix/TegraExplorer-Ext/releases/download/v4.2.2/TegraExplorer-Ext-4.2.2.zip",
+    "sha256": "6bb781d63108af1ef6118e3628b5e5f42121bea8dd78dabe7457fdcb5bdbc565"
+   }
+  }
+ },
+ "theme-patches": {
+  "tag": "47c8a5d596568ceabfa552bef2e26918ef399582",
+  "assets": {
+   "archive": {
+    "url": "https://codeload.github.com/exelix11/theme-patches/zip/47c8a5d596568ceabfa552bef2e26918ef399582",
+    "sha256": "b1c4d0f3c3cf05d7903bdd5c20106dac3cd416e0660147725a4dfdb3990d6802"
+   }
+  }
+ },
+ "themezer-nx": {
+  "tag": "3.3.1",
+  "published": "2026-10-04",
+  "assets": {
+   "themezer-nx.nro": {
+    "url": "https://github.com/ThemezerNX/Themezer-NX/releases/download/3.3.1/themezer-nx.nro",
+    "sha256": "c83741eafe3a999e717b056055d42df91369555d94285077ce6c117b16c0fe62"
+   }
+  }
+ },
+ "tico": {
+  "tag": "0.8.2",
+  "published": "2026-11-16",
+  "assets": {
+   "tico.nro": {
+    "url": "https://github.com/ticohq/tico/releases/download/0.8.2/tico.nro",
+    "sha256": "51098a3c1ebac80c2826884613e3dae422eea9f2acd63b355f48d23bc6264ffb"
+   }
+  }
+ },
+ "ultrahand": {
+  "tag": "v2.5.4",
+  "published": "2026-11-08",
+  "assets": {
+   "sdout.zip": {
+    "url": "https://github.com/ppkantorski/Ultrahand-Overlay/releases/download/v2.5.4/sdout.zip",
+    "sha256": "1e0ed6d7112f6283578220f3d3378fe27b1cd14910b28256f03fe232b284c944"
+   }
+  }
+ }
+}

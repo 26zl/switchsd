@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" role="img" aria-labelledby="title desc"
+     font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace">
+  <title id="title">switchsd</title>
+  <desc id="desc">A handheld console whose screen shows switchsd building an SD card. Circuit traces run from
+    it to a card laid out as a partition table, a FAT32 partition and an emuMMC partition.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0f14"/>
+      <stop offset="1" stop-color="#101c26"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#15222e" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-10%" y="-20%" width="120%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="frame"><rect width="1280" height="400" rx="24"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1280" height="400" fill="url(#background)"/>
+    <rect width="1280" height="400" fill="url(#grid)"/>
+
+    <!-- the last sectors of a partition table, faintly -->
+    <g font-size="12" fill="#22323f">
+      <text x="692" y="46">000001b0  00 00 00 00 00 00 00 00  a7 3c 91 5e 00 00 00 20</text>
+      <text x="692" y="63">000001c0  21 00 0c fe ff ff 00 80  00 00 00 80 35 02 00 fe</text>
+      <text x="692" y="80">000001f0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 55 aa</text>
+    </g>
+
+    <!-- traces from the console to the card, and a chip wired in from below -->
+    <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M624 176H652V266H684" stroke="#2dd4bf"/>
+      <path d="M624 212H642V288H684" stroke="#f59e0b"/>
+      <path d="M624 248H634V310H684" stroke="#1f6f68"/>
+      <path d="M344 328V352" stroke="#f59e0b"/>
+      <path d="M368 328V352" stroke="#2dd4bf"/>
+      <path d="M392 328V352" stroke="#1f6f68"/>
+    </g>
+    <g fill="#0a0f14" stroke-width="3">
+      <circle cx="684" cy="266" r="5" stroke="#2dd4bf"/>
+      <circle cx="684" cy="288" r="5" stroke="#f59e0b"/>
+      <circle cx="684" cy="310" r="5" stroke="#1f6f68"/>
+    </g>
+    <g>
+      <rect x="322" y="352" width="92" height="30" rx="4" fill="#0e161d" stroke="#3d5166" stroke-width="2"/>
+      <g stroke="#3d5166" stroke-width="3" stroke-linecap="round">
+        <path d="M312 360H322M312 374H322M414 360H424M414 374H424"/>
+      </g>
+      <circle cx="332" cy="361" r="2.5" fill="#3d5166"/>
+      <text x="368" y="372" font-size="12" text-anchor="middle" fill="#63788c" letter-spacing="2">MODCHIP</text>
+    </g>
+
+    <!-- the console -->
+    <g filter="url(#glow)">
+      <rect x="64" y="96" width="560" height="232" rx="46" fill="#111a23" stroke="#2dd4bf" stroke-width="3"/>
+    </g>
+    <path d="M110 96q0-8 8-8h52q8 0 8 8M510 96q0-8 8-8h52q8 0 8 8" fill="none" stroke="#2dd4bf" stroke-width="3"/>
+    <rect x="204" y="118" width="280" height="188" rx="8" fill="#04080b" stroke="#24323f" stroke-width="2"/>
+
+    <g fill="#16212c" stroke="#3d5166" stroke-width="2">
+      <circle cx="134" cy="166" r="25"/>
+      <circle cx="554" cy="258" r="25"/>
+      <path d="M124 232h20v16h16v20h-16v16h-20v-16h-16v-20h16z"/>
+      <circle cx="554" cy="142" r="11"/>
+      <circle cx="554" cy="190" r="11"/>
+      <circle cx="530" cy="166" r="11"/>
+      <rect x="170" y="290" width="13" height="13" rx="3"/>
+      <circle cx="506" cy="297" r="7"/>
+    </g>
+    <circle cx="578" cy="166" r="11" fill="#f59e0b" stroke="#fbbf24" stroke-width="2"/>
+    <g fill="#0c1319" stroke="#3d5166" stroke-width="2">
+      <circle cx="134" cy="166" r="13"/>
+      <circle cx="554" cy="258" r="13"/>
+    </g>
+    <g stroke="#63788c" stroke-width="3" stroke-linecap="round">
+      <path d="M170 116h14"/>
+      <path d="M504 116h14M511 109v14"/>
+    </g>
+
+    <!-- what the screen shows -->
+    <g font-size="13">
+      <text x="218" y="146" fill="#e6edf3"><tspan fill="#2dd4bf">$</tspan> switchsd.py new --emummc 12</text>
+      <text x="218" y="170" fill="#8b9fb3">probe: 64 blocks read back</text>
+      <text x="218" y="194" fill="#8b9fb3">writing files: 0.38 GB</text>
+      <text x="218" y="218" fill="#7ee787">FAT32 verified: 639 files</text>
+      <text x="218" y="242" fill="#fbbf24">emuMMC 0xe0  12.9 GB  empty</text>
+      <text x="218" y="278" fill="#2dd4bf">the card is ready</text>
+      <rect x="356" y="266" width="9" height="15" fill="#2dd4bf">
+        <animate attributeName="opacity" values="1;1;0;0" dur="1.2s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+
+    <!-- name and what it does -->
+    <text x="688" y="152" font-size="78" font-weight="700" fill="#e6edf3" letter-spacing="-2">switch<tspan fill="#2dd4bf">sd</tspan></text>
+    <text x="692" y="192" font-size="22" fill="#9fb3c8">set up · check · back up · migrate</text>
+    <text x="692" y="220" font-size="15" fill="#63788c">hekate / Atmosphère SD cards · macOS · Linux · Windows</text>
+
+    <!-- the card, as the tool lays it out -->
+    <path d="M684 246h516q12 0 12 12v70q0 12-12 12h-516z" fill="#0e161d" stroke="#2a3b4c" stroke-width="2"/>
+    <g font-size="14" font-weight="700">
+      <rect x="700" y="262" width="16" height="36" rx="3" fill="#f59e0b"/>
+      <rect x="722" y="262" width="26" height="36" rx="3" fill="none" stroke="#3d5166" stroke-width="2" stroke-dasharray="4 4"/>
+      <rect x="754" y="262" width="282" height="36" rx="3" fill="#123b39" stroke="#2dd4bf" stroke-width="2"/>
+      <text x="895" y="285" text-anchor="middle" fill="#5eead4">FAT32</text>
+      <rect x="1042" y="262" width="154" height="36" rx="3" fill="#3d2a0c" stroke="#f59e0b" stroke-width="2"/>
+      <text x="1119" y="285" text-anchor="middle" fill="#fbbf24">emuMMC</text>
+    </g>
+    <g font-size="11" fill="#63788c">
+      <text x="700" y="320">MBR</text>
+      <text x="735" y="320" text-anchor="middle">16M</text>
+      <text x="754" y="320">0x0c · files, homebrew, games</text>
+      <text x="1042" y="320">0xe0 · emulated NAND</text>
+    </g>
+  </g>
+</svg>
