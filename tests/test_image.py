@@ -2,10 +2,14 @@
 
 from __future__ import annotations
 
+import io
+import os
 import struct
+import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from support import MIB, build_card, card_tree, dir_node, file_node, rand, run_tool
 from test_fat32 import FatBuilder
@@ -15,8 +19,8 @@ from switchsd.common import Failure, Mismatch
 from switchsd.fat32 import Fat32, check_fits, write_fat32
 from switchsd.imagefile import MAGIC, CompactImage, is_compact, merge, write_image
 from switchsd.mbr import Part, parse_mbr, plan_layout
-from switchsd.migrate import (flatten, forget_old_layout, open_image, tree_from_fat, tree_from_files, used_regions,
-                              verify_fat32)
+from switchsd.migrate import (a_person_can_answer, flatten, forget_old_layout, open_image, tree_from_fat,
+                              tree_from_files, used_regions, verify_fat32)
 
 SIZE = 160 * MIB
 FAT = Part(1, 0x0C, 32_768, 196_608)
@@ -156,6 +160,16 @@ class ImageTests(unittest.TestCase):
         self.assertEqual(merge([(100, 50), (0, 10), (10, 5), (150, 1), (400, 0)]), [(0, 15), (100, 51)])
         self.assertEqual(merge([(0, 10), (20, 10), (200, 10)], gap=10), [(0, 30), (200, 10)])
         self.assertEqual(merge([(0, 100), (10, 20)]), [(0, 100)])
+
+
+class ConfirmTests(unittest.TestCase):
+    def test_only_a_terminal_counts_as_a_person_who_can_answer(self):
+        with open(os.devnull) as nothing, mock.patch.object(sys, "stdin", nothing):
+            self.assertFalse(a_person_can_answer())  # Windows calls NUL a terminal; a script hands it over
+        with mock.patch.object(sys, "stdin", io.StringIO("2\n")):
+            self.assertFalse(a_person_can_answer())
+        with mock.patch.object(sys, "stdin", None):
+            self.assertFalse(a_person_can_answer())
 
 
 class RestoreTests(unittest.TestCase):

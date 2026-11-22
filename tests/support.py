@@ -111,8 +111,11 @@ class TestDisk:
             size_mb = self.image.stat().st_size // MIB
             _diskpart(f'create vdisk file="{self._vhd}" maximum={size_mb} type=expandable\n'
                       f'select vdisk file="{self._vhd}"\nattach vdisk\n')
+            # Offline, as macOS's --noMount and Linux's loop devices keep the system's hands off the disk:
+            # Windows would mount what the tool writes and add its own System Volume Information folder.
             out = subprocess.run(["powershell", "-NoProfile", "-Command",
-                                  f"(Get-DiskImage -ImagePath '{self._vhd}' | Get-Disk).Number"],
+                                  f"$d = Get-DiskImage -ImagePath '{self._vhd}' | Get-Disk; "
+                                  "Set-Disk -Number $d.Number -IsOffline $true -ErrorAction Stop; $d.Number"],
                                  capture_output=True, text=True, check=True, timeout=120).stdout.strip()
             self.id = out
             data = self.image.read_bytes()

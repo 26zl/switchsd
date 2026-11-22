@@ -114,10 +114,26 @@ def check_files(fat: Fat32, skip: Callable[[str], bool] = lambda path: False) ->
             raise Failure(f"{entry.path} is damaged on the source: {problem}") from None
 
 
+def a_person_can_answer() -> bool:
+    """Whether stdin is a terminal. On Windows isatty() says so of the NUL device too, which is what a
+    script hands over, so the console itself is asked there."""
+    if not sys.stdin or not sys.stdin.isatty():
+        return False
+    if sys.platform != "win32":
+        return True
+    import ctypes  # noqa: PLC0415 - Windows only
+    import msvcrt  # noqa: PLC0415
+    from ctypes import wintypes  # noqa: PLC0415
+    k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    k32.GetConsoleMode.argtypes = [wintypes.HANDLE, ctypes.POINTER(wintypes.DWORD)]
+    mode = wintypes.DWORD()
+    return bool(k32.GetConsoleMode(msvcrt.get_osfhandle(sys.stdin.fileno()), ctypes.byref(mode)))
+
+
 def confirm(args: argparse.Namespace, disk: Disk, action: str) -> None:
     if args.yes:
         return
-    if not sys.stdin.isatty():
+    if not a_person_can_answer():
         raise Failure("refusing to continue without confirmation; pass --yes to skip it")
     log(f"{action} on {disk.id} ({disk.name or 'unknown media'}, {gb(disk.size)}).")
     print(f"Type {disk.id} to continue: ", end="", file=sys.stderr, flush=True)
